@@ -58,19 +58,12 @@ def calc_time_hung(matrix, alg_func):
     start = timeit.default_timer()
 
     res = alg_func(cost_matrix)
+    print(res)
 
     stop = timeit.default_timer()
     print('Time for 500x500 matrix by Hungarian Algorithm: ', stop - start)
 
     return res
-
-
-# def creating(_):
-#     print('start working')
-#     mx_ = make_matrix(500, 500)
-#     result = calc_time_hung(mx_, Munkres().compute)
-#     write_mx_to_file(mx_, str(sys.path[0] + '\\dataset\\in_sample_{}.txt'.format(_)))
-#     write_res_to_file(result, mx_, str(sys.path[0] + '\\dataset\\out_sample_{}.txt'.format(_)))
 
 
 if __name__ == '__main__':

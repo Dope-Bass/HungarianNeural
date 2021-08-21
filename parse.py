@@ -23,16 +23,17 @@ def parse_from_file(file, row_size):
 
 def matrix_to_dataframe(mx, res_mx):
     columns = ['Assignments']
+    df_dict = {}
     for col in range(len(mx[0])):
         columns.append('Executor #{}'.format(col))
     columns.append('Executor for Assignment')
-    for row in range(len(mx)):
-        mx[row].insert(0, 'Assignment #{}'.format(row))
+    executors = 0
     for row in range(len(res_mx)):
+        mx[row].insert(0, 'Assignment #{}'.format(row))
         for res in range(len(res_mx[row])):
-            if res_mx[row][res]:
+            if res_mx[row][res] == 1:
+                executors += 1
                 mx[row].append(columns[res])
-                continue
-
-    print(columns)
-    print(mx[0])
+                break
+    print(executors)
+    return pd.DataFrame(mx, columns=columns)
