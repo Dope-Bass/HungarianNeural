@@ -1,20 +1,18 @@
-from multiprocessing.spawn import freeze_support
-
-from fastai import *
-from fastai.vision import *
-from fastai.text import *
-from fastai.tabular import *
-import numpy as np
-import torch
-from fastai import train
 import cflearn
-
-import time
+from cfdata.tabular import *
+import sys
+import pandas as pd
+from HungarianNeural import parse
 
 
 if __name__ == '__main__':
 
-    cflearn.make().fit()
+    file = str(sys.path[0]) + '\\dataset\\in_sample_1.txt'
+    o_file = str(sys.path[0]) + '\\dataset\\out_sample_1.txt'
+
+    matrix = parse.parse_from_file(file, 500)
+    res_mx = parse.parse_from_file(o_file, 500)
+    parse.matrix_to_dataframe(matrix, res_mx)
 
 
 

@@ -2,9 +2,10 @@ import time
 import random
 from munkres import *
 import sys
-import threading
+from threading import Thread
 
 count = 5000
+
 
 def make_matrix(rows, cols):
     mx = []
@@ -64,7 +65,8 @@ def calc_time_hung(matrix, alg_func):
     return res
 
 
-# def creating():
+# def creating(_):
+#     print('start working')
 #     mx_ = make_matrix(500, 500)
 #     result = calc_time_hung(mx_, Munkres().compute)
 #     write_mx_to_file(mx_, str(sys.path[0] + '\\dataset\\in_sample_{}.txt'.format(_)))
