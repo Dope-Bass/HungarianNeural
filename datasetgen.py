@@ -20,8 +20,8 @@ def make_matrix(rows, cols):
 
 def write_elem(elem, last, file):
     if last:
-        file.write(elem)
-        file.write('\n')
+        file.write(str(elem))
+        file.write('.')
     else:
         file.write(str(elem))
         file.write(',')
@@ -31,7 +31,7 @@ def write_mx_to_file(mx, name):
     with open(name, 'wt') as file:
         for row in range(len(mx)):
             for col in range(len(mx[row])):
-                write_elem(mx[row][col], True if col == len(mx[row]) else False, file)
+                write_elem(mx[row][col], True if col == len(mx[row])-1 else False, file)
 
     print('Just wrote down file ' + name)
 
@@ -40,7 +40,7 @@ def write_res_to_file(res_mx, mx, name):
     with open(name, 'wt') as file:
         for row in range(len(mx)):
             for col in range(len(mx[row])):
-                write_elem('1' if (row, col) in res_mx else '0', True if col == len(mx[row]) else False, file)
+                write_elem('1' if (row, col) in res_mx else '0', True if col == len(mx[row])-1 else False, file)
 
     print('Just wrote down file ' + name)
 
@@ -58,7 +58,6 @@ def calc_time_hung(matrix, alg_func):
     start = timeit.default_timer()
 
     res = alg_func(cost_matrix)
-    print(res)
 
     stop = timeit.default_timer()
     print('Time for 500x500 matrix by Hungarian Algorithm: ', stop - start)
