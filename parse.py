@@ -28,6 +28,11 @@ def matrix_to_dataframe(mx, res_mx):
     columns.append('Executor for Assignment')
     for row in range(len(mx)):
         mx[row].insert(0, 'Assignment #{}'.format(row))
+    for row in range(len(res_mx)):
+        for res in range(len(res_mx[row])):
+            if res_mx[row][res]:
+                mx[row].append(columns[res])
+                continue
 
     print(columns)
     print(mx[0])
