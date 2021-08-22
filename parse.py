@@ -29,6 +29,6 @@ def matrix_to_dataframe(mx, res_mx):
         mx[row].insert(0, 'Assignment #{}'.format(row))
         for res in range(len(res_mx[row])):
             if res_mx[row][res] == 1:
-                mx[row].append(columns[res])
+                mx[row].append('Executor #{}'.format(res))
                 break
     return pd.DataFrame(mx, columns=columns)
