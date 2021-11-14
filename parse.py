@@ -1,5 +1,3 @@
-import sys
-import os
 import pandas as pd
 
 
@@ -21,14 +19,33 @@ def parse_from_file(file, row_size):
 
 
 def matrix_to_dataframe(mx, res_mx):
-    columns = ['Assignments']
+    # columns = ['Assignments']
+    # columns = []
+    # for col in range(len(mx[0])):
+    #     columns.append('Executor#{}'.format(col))
+    # columns.append('ExecutorForAssignment')
+    # for row in range(len(res_mx)):
+    #     mx[row].insert(0, 'Assignment#{}'.format(row))
+    #     # mx[row].insert(0, row)
+    #     for res in range(len(res_mx[row])):
+    #         if res_mx[row][res] == 1:
+    #             mx[row].append('Executor#{}'.format(res))
+    #             break
+    # return pd.DataFrame(mx, columns=columns)
+
+    # data_dict = {'Assignments': []}
+    data_dict = {}
     for col in range(len(mx[0])):
-        columns.append('Executor #{}'.format(col))
-    columns.append('Executor for Assignment')
+        data_dict.update({'Executor#{}'.format(col): []})
+    data_dict.update({'ExecutorForAssignment': []})
     for row in range(len(res_mx)):
-        mx[row].insert(0, 'Assignment #{}'.format(row))
+        # data_dict.update({'Assignments': 'Assignment#{}'.format(row)})
+        # data_dict['Assignments'].append('Assignment#{}'.format(row))
         for res in range(len(res_mx[row])):
             if res_mx[row][res] == 1:
-                mx[row].append('Executor #{}'.format(res))
-                break
-    return pd.DataFrame(mx, columns=columns)
+                # data_dict.update({'ExecutorForAssignment': 'Executor#{}'.format(res)})
+                data_dict['ExecutorForAssignment'].append('Executor#{}'.format(res))
+            data_dict['Executor#{}'.format(res)].append(mx[row][res])
+    # print(data_dict)
+
+    return pd.DataFrame.from_dict(data_dict)
