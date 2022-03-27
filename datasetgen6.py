@@ -13,7 +13,7 @@ def make_matrix(rows, cols):
     for row in range(rows):
         mx.append([])
         for col in range(cols):
-            mx[row].append(random.randint(1, 300))
+            mx[row].append(random.randint(1, 15))
 
     return mx
 
@@ -67,8 +67,8 @@ def calc_time_hung(matrix, alg_func):
 
 if __name__ == '__main__':
 
-    for _ in range(80363, 90000):
-        mx_ = make_matrix(500, 500)
+    for _ in range(80000, 90000):
+        mx_ = make_matrix(5, 5)
         result = calc_time_hung(mx_, Munkres().compute)
         write_mx_to_file(mx_, str(sys.path[0] + '\\dataset\\in_sample_{}.txt'.format(_)))
         write_res_to_file(result, mx_, str(sys.path[0] + '\\dataset\\out_sample_{}.txt'.format(_)))
