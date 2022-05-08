@@ -26,10 +26,9 @@ class Net(nn.Module):
 
     def __init__(self):
         super().__init__()
-        self.fullyConnectedLayer1 = nn.Linear(5, 20)
-        self.fullyConnectedLayer2 = nn.Linear(20, 20)
-        self.fullyConnectedLayer3 = nn.Linear(20, 20)
-        self.fullyConnectedLayer4 = nn.Linear(20, 5)
+        self.conv1 = nn.Conv2d(1, 32, 2)
+        self.conv2 = nn.Conv2d(32, 64, 2)
+        self.conv3 = nn.Conv2d(64, 128, 2)
 
     def forward(self, x):
         x = torch.relu(self.fullyConnectedLayer1(x))

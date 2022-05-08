@@ -12,7 +12,7 @@ def parse_from_file(file, row_size):
             int_row = []
             for el in row.split(','):
                 if el.isalnum():
-                    int_row.append(int(el))
+                    int_row.append(float(el))
             rows.append(int_row)
 
     return rows

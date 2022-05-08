@@ -67,8 +67,8 @@ def calc_time_hung(matrix, alg_func):
 
 if __name__ == '__main__':
 
-    for _ in range(30000, 40000):
-        mx_ = make_matrix(5, 5)
+    for _ in range(10, 20):
+        mx_ = make_matrix(105, 105)
         result = calc_time_hung(mx_, Munkres().compute)
-        write_mx_to_file(mx_, str(sys.path[0] + '\\dataset\\in_sample_{}.txt'.format(_)))
-        write_res_to_file(result, mx_, str(sys.path[0] + '\\dataset\\out_sample_{}.txt'.format(_)))
+        write_mx_to_file(mx_, str(sys.path[0] + '\\in_sample_{}.txt'.format(_)))
+        write_res_to_file(result, mx_, str(sys.path[0] + '\\out_sample_{}.txt'.format(_)))
